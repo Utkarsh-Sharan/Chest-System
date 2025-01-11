@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: EpicChest
   m_EditorClassIdentifier: 
   ChestType: 2
+  ChestImage: {fileID: 21300000, guid: 6fac0536f1c39314f96bb1c891896ff6, type: 3}
   CoinRange:
     Min: 600
     Max: 800
   GemRange:
     Min: 45
     Max: 60
-  UnlockTime: 0
+  UnlockTime: 5

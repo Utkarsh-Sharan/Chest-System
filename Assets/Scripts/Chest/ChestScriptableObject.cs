@@ -7,6 +7,7 @@ public class ChestScriptableObject : ScriptableObject
 {
     [Header("Chest Properties")]
     public ChestType ChestType;
+    public Sprite ChestImage;
 
     [Header("Rewards")]
     public RangeInt CoinRange;

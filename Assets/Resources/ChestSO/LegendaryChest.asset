@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: LegendaryChest
   m_EditorClassIdentifier: 
   ChestType: 3
+  ChestImage: {fileID: 21300000, guid: 87e8e9533a2110f42a99fd18518424c0, type: 3}
   CoinRange:
     Min: 1000
     Max: 1200
   GemRange:
     Min: 80
     Max: 100
-  UnlockTime: 0
+  UnlockTime: 10

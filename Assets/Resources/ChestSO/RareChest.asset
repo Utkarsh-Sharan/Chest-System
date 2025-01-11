@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: RareChest
   m_EditorClassIdentifier: 
   ChestType: 1
+  ChestImage: {fileID: 21300000, guid: 3bee81b0f5f53454bb3a0a34752b8f1b, type: 3}
   CoinRange:
     Min: 300
     Max: 500
   GemRange:
     Min: 20
     Max: 40
-  UnlockTime: 0
+  UnlockTime: 2
