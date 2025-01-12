@@ -4,26 +4,16 @@ using UnityEngine.UI;
 public class SlotController : MonoBehaviour
 {
     private SlotState slotState;
-    [SerializeField] private GameObject emptySlotImage;
+    [SerializeField] private int maximumSlots;
+    [SerializeField] private GameObject emptySlotObject;
 
-    public void SetSlotState(SlotState slotState)
+    private void Start()
     {
-        this.slotState = slotState;
+        slotState = SlotState.Empty;
 
-        switch(this.slotState)
+        for (int i = 0; i < maximumSlots; ++i)
         {
-            case SlotState.Empty:
-                emptySlotImage.SetActive(true);
-                break;
-
-            case SlotState.Occupied:
-                emptySlotImage.SetActive(false);
-                break;
+            Instantiate(emptySlotObject, this.transform);
         }
-    }
-
-    public SlotState GetSlotState()
-    {
-        return slotState;
     }
 }

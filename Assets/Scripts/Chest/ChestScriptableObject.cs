@@ -29,8 +29,5 @@ public struct RangeInt
         Max = max;
     }
 
-    /// <summary>
-    /// Get a random value within the range.
-    /// </summary>
     public int GetRandomValue() => Random.Range(Min, Max + 1);
 }
