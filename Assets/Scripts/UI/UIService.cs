@@ -14,6 +14,6 @@ public class UIService : MonoBehaviour
 
     private void GenerateRandomChest()
     {
-
+        GameService.Instance.ChestService.CreateRandomChest();
     }
 }

@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class ChestController : MonoBehaviour
 {
-    private ChestView chestView;
-    private List<ChestScriptableObject> chestSO;
+    [SerializeField] private ChestView chestView;
+    [SerializeField] private List<ChestScriptableObject> chestSO;
 
     public void CreateRandomChest()
     {
-
+        Instantiate(chestView.gameObject);
     }
 }
