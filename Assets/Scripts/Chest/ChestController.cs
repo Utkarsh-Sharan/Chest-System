@@ -1,7 +1,10 @@
-public class ChestController
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChestController : MonoBehaviour
 {
     private ChestView chestView;
-    private ChestScriptableObject chestSO;
+    private List<ChestScriptableObject> chestSO;
 
     public void CreateRandomChest()
     {
