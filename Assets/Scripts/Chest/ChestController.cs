@@ -22,6 +22,8 @@ public class ChestController : MonoBehaviour
         Transform slotTransform = GameService.Instance.SlotService.GetSlotTransform(firstEmptySlotIndex);
 
         GameObject chestObject = Instantiate(chestView.gameObject, slotTransform.position, Quaternion.identity, slotTransform);
+        ChestView chestViewComponent = chestObject.GetComponent<ChestView>();
+        chestViewComponent.InitializeChestData(randomChestSO);
 
         GameService.Instance.SlotService.UpdateSlotState(firstEmptySlotIndex, SlotState.Occupied);
     }

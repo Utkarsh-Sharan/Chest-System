@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
+    [SerializeField] private Image chestImage;
+    public void InitializeChestData(ChestScriptableObject chestSO)
+    {
+        chestImage.sprite = chestSO.ChestImage;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //display popup showing chest stats.
+        //display popup showing chest stats(coin and gem count).
     }
 
     public void OnPointerClick(PointerEventData eventData)
