@@ -1163,11 +1163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestView: {fileID: 6232566782523013107, guid: f424d1e29b1557e42b4533daa4c3d40c, type: 3}
-  chestSO:
-  - {fileID: 11400000, guid: 27a8fdc0912f7bf47b2e4c40624245e6, type: 2}
-  - {fileID: 11400000, guid: 15502aa463ef1eb4a91b4e678027acd2, type: 2}
-  - {fileID: 11400000, guid: 3cccbcc3f4dab304c904c534d86824af, type: 2}
-  - {fileID: 11400000, guid: 6636345efb568054faf3dabe844102bc, type: 2}
 --- !u!1 &627313809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,6 +2628,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3cccbcc3f4dab304c904c534d86824af, type: 2}
   - {fileID: 11400000, guid: 6636345efb568054faf3dabe844102bc, type: 2}
   chestController: {fileID: 624071019}
+  slotController: {fileID: 1934092372}
 --- !u!4 &1279685807
 Transform:
   m_ObjectHideFlags: 0
@@ -3564,7 +3560,7 @@ GameObject:
   - component: {fileID: 1934092371}
   - component: {fileID: 1934092372}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: SlotController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
