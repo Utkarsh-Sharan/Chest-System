@@ -7,29 +7,39 @@ using UnityEngine.UI;
 public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     [SerializeField] private Image chestImage;
+    private ChestType chestType;
+    private RangeInt coinRange;
+    private RangeInt gemRange;
+    private int unlockTime;
+
+    private ChestController chestController;
+
+    public void SetController(ChestController chestController)
+    {
+        this.chestController = chestController;
+    }
+
     public void InitializeChestData(ChestScriptableObject chestSO)
     {
-        chestImage.sprite = chestSO.ChestImage;
+        this.chestImage.sprite = chestSO.ChestImage;
+        this.chestType = chestSO.ChestType;
+        this.coinRange = chestSO.CoinRange;
+        this.gemRange = chestSO.GemRange;
+        this.unlockTime = chestSO.UnlockTime;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //display popup showing chest stats(coin and gem count).
+        chestController.OnMouseHover();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //close popup showing chest stats.
-
-        //decided on the basis of STATE in which the chest is.
-        //LOCKED    - popup to show Start Timer and Unlock with gems button.
-        //UNLOCKING - popup to show Unlock with gems button only.
-        //UNLOCKED  - change chest's state to COLLECTED.
-        //COLLECTED - simply destroy THIS chest and change slot's state to EMPTY.
+        chestController.OnMouseClick();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //close popup showing chest stats.
+        chestController.OnMouseLeave();
     }
 }

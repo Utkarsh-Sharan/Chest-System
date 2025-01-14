@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ChestController : MonoBehaviour
 {
     [SerializeField] private ChestView chestView;
     private List<ChestScriptableObject> chestSO;
+
+    public void Init()
+    {
+        chestView.SetController(this);
+    }
 
     public void CreateRandomChest(List<ChestScriptableObject> chestSO)
     {
@@ -26,5 +32,26 @@ public class ChestController : MonoBehaviour
         chestViewComponent.InitializeChestData(randomChestSO);
 
         GameService.Instance.SlotService.UpdateSlotState(firstEmptySlotIndex, SlotState.Occupied);
+    }
+
+    public void OnMouseHover()
+    {
+        //display popup showing chest stats(coin and gem count).
+    }
+
+    public void OnMouseClick()
+    {
+        //close popup showing chest stats.
+
+        //decided on the basis of STATE in which the chest is. If the chest is-
+        //LOCKED    - then on click, popup to show Start Timer and Unlock with gems button.
+        //UNLOCKING - then on click, popup to show Unlock with gems button only.
+        //UNLOCKED  - then on click, change chest's state to COLLECTED.
+        //COLLECTED - simply destroy This chest and change slot's state to EMPTY.
+    }
+
+    public void OnMouseLeave()
+    {
+        //close popup showing chest stats.
     }
 }
