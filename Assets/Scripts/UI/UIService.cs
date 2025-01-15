@@ -47,5 +47,10 @@ public class UIService : MonoBehaviour
 
     private void OpenPopupPanel() => popupPanel.SetActive(true);
 
-    public void ClosePopupPanel() => popupPanel.SetActive(false);
+    public void ClosePopupPanel()
+    {
+        chestHoverObject.SetActive(false);
+        chestClickedObject.SetActive(false);
+        popupPanel.SetActive(false);
+    }
 }
