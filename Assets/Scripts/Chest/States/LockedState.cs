@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class LockedState : MonoBehaviour
+public class LockedState : IChestState
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnStateEnter()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnClick()
+    {
+        //show popup showing Start Timer and Unlock with gems buttons.
+    }
+
+    public void OnStateExit()
     {
         
     }

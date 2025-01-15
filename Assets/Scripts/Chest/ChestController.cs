@@ -6,10 +6,18 @@ public class ChestController : MonoBehaviour
 {
     [SerializeField] private ChestView chestView;
     private List<ChestScriptableObject> chestSO;
+    private IChestState currentState;
 
     public void Init()
     {
-        chestView.SetController(this);
+        SetChestState(new LockedState());
+    }
+
+    public void SetChestState(IChestState newState)
+    {
+        currentState?.OnStateExit();
+        currentState = newState;
+        currentState.OnStateEnter();
     }
 
     public void CreateRandomChest(List<ChestScriptableObject> chestSO)
@@ -30,16 +38,18 @@ public class ChestController : MonoBehaviour
         GameObject chestObject = Instantiate(chestView.gameObject, slotTransform.position, Quaternion.identity, slotTransform);
         ChestView chestViewComponent = chestObject.GetComponent<ChestView>();
         chestViewComponent.InitializeChestData(randomChestSO);
+        chestViewComponent.SetController(this);
 
         GameService.Instance.SlotService.UpdateSlotState(firstEmptySlotIndex, SlotState.Occupied);
     }
 
-    public void OnMouseHover()
+    public void OnMouseHover(ChestView chestView)
     {
         //display popup showing chest stats(coin and gem count).
+        GameService.Instance.UIService.ShowChestDataOnHover(chestView);
     }
 
-    public void OnMouseClick()
+    public void OnMouseClick(ChestView chestView)
     {
         //close popup showing chest stats.
 
@@ -48,10 +58,12 @@ public class ChestController : MonoBehaviour
         //UNLOCKING - then on click, popup to show Unlock with gems button only.
         //UNLOCKED  - then on click, change chest's state to COLLECTED.
         //COLLECTED - simply destroy This chest and change slot's state to EMPTY.
+        currentState.OnClick();
     }
 
-    public void OnMouseLeave()
+    public void OnMouseLeave(ChestView chestView)
     {
         //close popup showing chest stats.
+        GameService.Instance.UIService.ClosePopupPanel();
     }
 }

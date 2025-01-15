@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
+    private ChestScriptableObject chestSO;
+
     [SerializeField] private Image chestImage;
     private ChestType chestType;
     private RangeInt coinRange;
@@ -21,6 +23,8 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
     public void InitializeChestData(ChestScriptableObject chestSO)
     {
+        this.chestSO = chestSO;
+
         this.chestImage.sprite = chestSO.ChestImage;
         this.chestType = chestSO.ChestType;
         this.coinRange = chestSO.CoinRange;
@@ -30,16 +34,23 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        chestController.OnMouseHover();
+        if (chestController == null)
+        {
+            Debug.LogError("ChestController is null in ChestView!");
+            return;
+        }
+        chestController.OnMouseHover(this);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        chestController.OnMouseClick();
+        chestController.OnMouseClick(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        chestController.OnMouseLeave();
+        chestController.OnMouseLeave(this);
     }
+
+    public ChestScriptableObject GetChestData() => chestSO;
 }
