@@ -17,6 +17,9 @@ public class UIService : MonoBehaviour
     [SerializeField] private TextMeshProUGUI coinRangeText;
     [SerializeField] private TextMeshProUGUI gemRangeText;
 
+    [Header("Chest Click")]
+    [SerializeField] private GameObject chestClickedObject;
+
     private void Start()
     {
         generateChestButton.onClick.AddListener(GenerateRandomChest);
@@ -29,15 +32,20 @@ public class UIService : MonoBehaviour
 
     public void ShowChestDataOnHover(ChestView chestView)
     {
-        popupPanel.SetActive(true);
+        OpenPopupPanel();
         chestHoverObject.SetActive(true);
-        chestTypeText.text = $"This is a {chestView.GetChestData().ChestType} chest";
+        chestTypeText.text = $"This is a {chestView.GetChestData().ChestType} chest.";
         coinRangeText.text = $"X {chestView.GetChestData().CoinRange.Min}-{chestView.GetChestData().CoinRange.Max}";
         gemRangeText.text = $"X {chestView.GetChestData().GemRange.Min}-{chestView.GetChestData().GemRange.Max}";
     }
 
-    public void ClosePopupPanel()
+    public void ShowChestStateOnClick()
     {
-        popupPanel.SetActive(false);
+        OpenPopupPanel();
+        chestClickedObject.SetActive(true);
     }
+
+    private void OpenPopupPanel() => popupPanel.SetActive(true);
+
+    public void ClosePopupPanel() => popupPanel.SetActive(false);
 }

@@ -34,11 +34,6 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (chestController == null)
-        {
-            Debug.LogError("ChestController is null in ChestView!");
-            return;
-        }
         chestController.OnMouseHover(this);
     }
 
