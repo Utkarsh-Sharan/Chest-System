@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145758732d552814ca6d53e30e966074, type: 3}
+  m_Name: ChestHoverPopup
+  m_EditorClassIdentifier: 
+  PopupType: 0
+  PopupObject: {fileID: 8056815683343273138, guid: 2fec2546f6815074b8d4bdbabff6808f, type: 3}

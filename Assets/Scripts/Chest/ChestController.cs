@@ -47,6 +47,7 @@ public class ChestController : MonoBehaviour
     {
         //display popup showing chest stats(coin and gem count).
         GameService.Instance.UIService.ShowChestDataOnHover(chestView);
+        GameService.Instance.UIService.OpenPopupOfType(PopupType.Chest_Hover_Popup);
     }
 
     public void OnMouseClick(ChestView chestView)
@@ -64,6 +65,6 @@ public class ChestController : MonoBehaviour
     public void OnMouseLeave(ChestView chestView)
     {
         //close popup showing chest stats.
-        GameService.Instance.UIService.ClosePopupPanel();
+        //GameService.Instance.UIService.ClosePopupPanel();
     }
 }
