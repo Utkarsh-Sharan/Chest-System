@@ -5,7 +5,7 @@ public class UnlockedState : IChestState
         
     }
 
-    public void OnClick()
+    public void OnClick(ChestView chestView)
     {
         
     }

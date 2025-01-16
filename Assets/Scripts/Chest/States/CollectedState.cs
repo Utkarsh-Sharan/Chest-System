@@ -5,7 +5,7 @@ public class CollectedState : IChestState
         
     }
 
-    public void OnClick()
+    public void OnClick(ChestView chestView)
     {
         
     }
