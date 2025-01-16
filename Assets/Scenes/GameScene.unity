@@ -1603,7 +1603,7 @@ MonoBehaviour:
   chestTypeText: {fileID: 0}
   coinRangeText: {fileID: 0}
   gemRangeText: {fileID: 0}
-  chestClickedObject: {fileID: 0}
+  chestClickedObject: {fileID: 8919798322951432956, guid: d7f2929ffb596df49a14d177c5082777, type: 3}
 --- !u!1 &2000523877
 GameObject:
   m_ObjectHideFlags: 0
