@@ -191,7 +191,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 624071018}
   - {fileID: 1934092370}
   m_Father: {fileID: 89784096}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -435,11 +434,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 283635598}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250.00024, y: -150}
+  m_AnchoredPosition: {x: 250.00024, y: 450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624071019
@@ -1600,10 +1599,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1aedf94167fac744dae7ab8f257d1bde, type: 2}
   - {fileID: 11400000, guid: 414ccafc722562c41b6032b29228ccdd, type: 2}
   - {fileID: 11400000, guid: 0cd788d21c70d40488a088c3dd46c2d3, type: 2}
-  chestTypeText: {fileID: 0}
-  coinRangeText: {fileID: 0}
-  gemRangeText: {fileID: 0}
-  chestClickedObject: {fileID: 8919798322951432956, guid: d7f2929ffb596df49a14d177c5082777, type: 3}
 --- !u!1 &2000523877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1673,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 13b58dd166f6b6f46a1a9bea7f19957c, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.45490196}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.19607843}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1856,3 +1851,4 @@ SceneRoots:
   - {fileID: 1279685807}
   - {fileID: 1989256974}
   - {fileID: 815719959}
+  - {fileID: 624071018}

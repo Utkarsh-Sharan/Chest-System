@@ -34,6 +34,7 @@ public class UIService : MonoBehaviour
 
     public void OpenPopupOfType(PopupType popupType, ChestView chestView)
     {
+        //take reference of currently open popup.
         foreach (var popup in instantiatedPopups)
         {
             GameObject popupInstance = popup.Value;

@@ -24,7 +24,7 @@ public class ChestController : MonoBehaviour
     {
         this.chestSO = chestSO;
 
-        int firstEmptySlotIndex = GameService.Instance.SlotService.GetFirstAvailableEmptySlot();
+        int firstEmptySlotIndex = GameService.Instance.SlotService.GetFirstAvailableEmptySlot(); //should be responsibility of slot controller. dont manipulate other class's data structure
         if (firstEmptySlotIndex == -1)
         {
             Debug.Log("No available slots to create a chest.");
@@ -32,15 +32,15 @@ public class ChestController : MonoBehaviour
         }
 
         ChestScriptableObject randomChestSO = chestSO[Random.Range(0, chestSO.Count)];
+        //CreateChest(chestSO)
 
-        Transform slotTransform = GameService.Instance.SlotService.GetSlotTransform(firstEmptySlotIndex);
+        Transform slotTransform = GameService.Instance.SlotService.GetSlotTransform(firstEmptySlotIndex); //should be responsibility of slot controller.
 
-        GameObject chestObject = Instantiate(chestView.gameObject, slotTransform.position, Quaternion.identity, slotTransform);
-        ChestView chestViewComponent = chestObject.GetComponent<ChestView>();
-        chestViewComponent.InitializeChestData(randomChestSO);
-        chestViewComponent.SetController(this);
+        ChestView chestObject = Instantiate(chestView, slotTransform.position, Quaternion.identity, slotTransform);
+        chestObject.InitializeChestData(/*this,*/ randomChestSO);
+        chestObject.SetController(this);
 
-        GameService.Instance.SlotService.UpdateSlotState(firstEmptySlotIndex, SlotState.Occupied);
+        GameService.Instance.SlotService.UpdateSlotState(firstEmptySlotIndex, SlotState.Occupied); //should be responsibility of slot controller.
     }
 
     public void OnMouseHover(ChestView chestView)

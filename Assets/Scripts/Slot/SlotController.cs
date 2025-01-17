@@ -24,7 +24,7 @@ public class SlotController : MonoBehaviour
             if (slots[i].GetSlotState() == SlotState.Empty)
                 return i;
         }
-
+        //debug(and other ops) over here if not present.
         return -1;
     }
 
