@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -23,6 +21,8 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
     public void InitializeChestData(ChestScriptableObject chestSO)
     {
+        this.enabled = false;
+
         this.chestSO = chestSO;
 
         this.chestImage.sprite = chestSO.ChestImage;
@@ -30,6 +30,8 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         this.coinRange = chestSO.CoinRange;
         this.gemRange = chestSO.GemRange;
         this.unlockTime = chestSO.UnlockTime;
+
+        this.enabled = true;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

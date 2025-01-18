@@ -9,9 +9,7 @@ public class SlotService
         this.slotController = slotController;
     }
 
-    public int GetFirstAvailableEmptySlot() => slotController.GetFirstAvailableEmptySlot();
+    public bool IsEmptySlotAvailable() => slotController.IsEmptySlotAvailable();
 
-    public Transform GetSlotTransform(int index) => slotController.GetSlotTransform(index);
-
-    public void UpdateSlotState(int index, SlotState state) => slotController.UpdateSlotState(index, state);
+    public void AddChestToSlot(ChestView chestObject) => slotController.AddChestToSlot(chestObject);
 }

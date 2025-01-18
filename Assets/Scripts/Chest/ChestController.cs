@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 public class ChestController : MonoBehaviour
 {
     [SerializeField] private ChestView chestView;
-    private List<ChestScriptableObject> chestSO;
     private IChestState currentState;
 
     public void Init()
@@ -22,25 +21,15 @@ public class ChestController : MonoBehaviour
 
     public void CreateRandomChest(List<ChestScriptableObject> chestSO)
     {
-        this.chestSO = chestSO;
-
-        int firstEmptySlotIndex = GameService.Instance.SlotService.GetFirstAvailableEmptySlot(); //should be responsibility of slot controller. dont manipulate other class's data structure
-        if (firstEmptySlotIndex == -1)
-        {
-            Debug.Log("No available slots to create a chest.");
+        bool isEmptySlotAvailable = GameService.Instance.SlotService.IsEmptySlotAvailable();
+        if (!isEmptySlotAvailable)
             return;
-        }
 
         ChestScriptableObject randomChestSO = chestSO[Random.Range(0, chestSO.Count)];
-        //CreateChest(chestSO)
 
-        Transform slotTransform = GameService.Instance.SlotService.GetSlotTransform(firstEmptySlotIndex); //should be responsibility of slot controller.
-
-        ChestView chestObject = Instantiate(chestView, slotTransform.position, Quaternion.identity, slotTransform);
-        chestObject.InitializeChestData(/*this,*/ randomChestSO);
-        chestObject.SetController(this);
-
-        GameService.Instance.SlotService.UpdateSlotState(firstEmptySlotIndex, SlotState.Occupied); //should be responsibility of slot controller.
+        chestView.SetController(this);
+        chestView.InitializeChestData(randomChestSO);
+        GameService.Instance.SlotService.AddChestToSlot(chestView);
     }
 
     public void OnMouseHover(ChestView chestView)

@@ -7,6 +7,8 @@ public class SlotController : MonoBehaviour
     [SerializeField] private GameObject emptySlotObject;
     private List<SlotItem> slots = new List<SlotItem>();
 
+    private int currentIndex;
+
     private void Start()
     {
         for (int i = 0; i < maximumSlots; ++i)
@@ -17,18 +19,28 @@ public class SlotController : MonoBehaviour
         }
     }
 
-    public int GetFirstAvailableEmptySlot()
+    public bool IsEmptySlotAvailable()
     {
         for (int i = 0; i < slots.Count; ++i)
         {
             if (slots[i].GetSlotState() == SlotState.Empty)
-                return i;
+            {
+                currentIndex = i;
+                return true;
+            }
         }
         //debug(and other ops) over here if not present.
-        return -1;
+        Debug.Log("No available slots to create a chest.");
+        return false;
     }
 
-    public Transform GetSlotTransform(int index) => slots[index].transform;
+    public void AddChestToSlot(ChestView chestObject)
+    {
+        Instantiate(chestObject, GetSlotTransform(currentIndex).position, Quaternion.identity, slots[currentIndex].transform);
+        UpdateSlotState(currentIndex, SlotState.Occupied);
+    }
 
-    public void UpdateSlotState(int index, SlotState state) => slots[index].SetSlotState(state);
+    private Transform GetSlotTransform(int index) => slots[index].transform;
+
+    private void UpdateSlotState(int index, SlotState state) => slots[index].SetSlotState(state);
 }
