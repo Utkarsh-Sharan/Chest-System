@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 87e8e9533a2110f42a99fd18518424c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3bee81b0f5f53454bb3a0a34752b8f1b, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestImage: {fileID: 3281783809510265491}
+  chestController: {fileID: 609166834007807203, guid: ef46d4f10df0dd547a332a4f179b5e50, type: 3}
 --- !u!1 &6673325229743308999
 GameObject:
   m_ObjectHideFlags: 0

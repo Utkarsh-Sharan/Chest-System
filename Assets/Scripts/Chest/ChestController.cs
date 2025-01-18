@@ -26,10 +26,10 @@ public class ChestController : MonoBehaviour
             return;
 
         ChestScriptableObject randomChestSO = chestSO[Random.Range(0, chestSO.Count)];
+        ChestView chestObject = Instantiate(chestView);
+        chestObject.InitializeChestData(this, randomChestSO);
 
-        chestView.SetController(this);
-        chestView.InitializeChestData(randomChestSO);
-        GameService.Instance.SlotService.AddChestToSlot(chestView);
+        GameService.Instance.SlotService.AddChestToSlot(chestObject);
     }
 
     public void OnMouseHover(ChestView chestView)

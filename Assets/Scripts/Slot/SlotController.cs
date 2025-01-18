@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,7 +37,9 @@ public class SlotController : MonoBehaviour
 
     public void AddChestToSlot(ChestView chestObject)
     {
-        Instantiate(chestObject, GetSlotTransform(currentIndex).position, Quaternion.identity, slots[currentIndex].transform);
+        chestObject.transform.SetParent(GetSlotTransform(currentIndex));
+        chestObject.transform.localPosition = Vector3.zero;
+
         UpdateSlotState(currentIndex, SlotState.Occupied);
     }
 
