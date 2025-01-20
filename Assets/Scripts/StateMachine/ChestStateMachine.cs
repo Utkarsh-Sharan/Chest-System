@@ -12,6 +12,11 @@ public class ChestStateMachine
         CreateStates(chestObject);
     }
 
+    public void OnClick(ChestView chestObject)
+    {
+        currentState.OnClick(chestObject);
+    }
+
     public void ChangeState(ChestStates newState) => ChangeState(states[newState]);
 
     private void ChangeState(IChestState newState)

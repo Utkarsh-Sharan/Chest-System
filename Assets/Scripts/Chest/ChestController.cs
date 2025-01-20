@@ -5,12 +5,7 @@ using UnityEngine.EventSystems;
 public class ChestController : MonoBehaviour
 {
     [SerializeField] private ChestView chestView;
-    private IChestState currentState;
-
-    public void InitializeChestState()
-    {
-        //SetChestState(new LockedState());
-    }
+    private ChestStateMachine stateMachine;
 
     public void CreateRandomChest(List<ChestScriptableObject> chestSO)
     {
@@ -23,6 +18,13 @@ public class ChestController : MonoBehaviour
         chestObject.InitializeChestData(this, randomChestSO);
 
         GameService.Instance.SlotService.AddChestToSlot(chestObject);
+        SetChestInitialState(chestObject);
+    }
+
+    private void SetChestInitialState(ChestView chestObject)
+    {
+        stateMachine = new ChestStateMachine(chestObject);
+        stateMachine.ChangeState(ChestStates.Locked);
     }
 
     public void OnMouseHover(ChestView chestView)
@@ -40,7 +42,7 @@ public class ChestController : MonoBehaviour
         //UNLOCKING - then on click, popup to show Unlock with gems button only.
         //UNLOCKED  - then on click, change chest's state to COLLECTED.
         //COLLECTED - simply destroy This chest and change slot's state to EMPTY.
-        currentState.OnClick(chestView);
+        stateMachine.OnClick(chestView);
     }
 
     public void OnMouseLeave(ChestView chestView)

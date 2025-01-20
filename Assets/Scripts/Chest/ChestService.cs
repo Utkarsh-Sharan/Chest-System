@@ -9,8 +9,6 @@ public class ChestService
     {
         this.chestController = chestController;
         this.chestSO = chestSO;
-
-        chestController.InitializeChestState();
     }
 
     public void CreateRandomChest()

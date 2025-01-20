@@ -12,11 +12,10 @@ public class LockedState : IChestState
         
     }
 
-    public void OnClick(ChestView chestView)
+    public void OnClick(ChestView chestObject)
     {
         //show popup showing Start Timer and Unlock with gems buttons.
-        GameService.Instance.UIService.OpenPopupOfType(PopupType.Chest_Click_Popup, chestView);
-        //GameService.Instance.UIService.ShowChestStateOnClick();
+        GameService.Instance.UIService.OpenPopupOfType(PopupType.Chest_Click_Popup, chestObject);
     }
 
     public void OnStateExit()
