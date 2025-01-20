@@ -7,16 +7,9 @@ public class ChestController : MonoBehaviour
     [SerializeField] private ChestView chestView;
     private IChestState currentState;
 
-    public void Init()
+    public void InitializeChestState()
     {
-        SetChestState(new LockedState());
-    }
-
-    public void SetChestState(IChestState newState)
-    {
-        currentState?.OnStateExit();
-        currentState = newState;
-        currentState.OnStateEnter();
+        //SetChestState(new LockedState());
     }
 
     public void CreateRandomChest(List<ChestScriptableObject> chestSO)
