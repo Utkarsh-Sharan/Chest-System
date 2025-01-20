@@ -46,7 +46,7 @@ public class ChestController : MonoBehaviour
 
     public void OnMouseLeave(ChestView chestView)
     {
-        GameService.Instance.UIService.CloseAllPopups();
+        GameService.Instance.UIService.CloseHoverPopup();
     }
 
     public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);

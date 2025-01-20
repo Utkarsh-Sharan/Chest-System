@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface PopupView
+public abstract class PopupView : MonoBehaviour 
 {
-    public abstract void Setup(ChestView chestView);//abstract class or interface????
+    public abstract void Setup(ChestView chestView);
 }

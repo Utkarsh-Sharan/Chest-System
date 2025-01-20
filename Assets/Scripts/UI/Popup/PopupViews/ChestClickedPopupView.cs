@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ChestClickedPopupView : MonoBehaviour, PopupView
+public class ChestClickedPopupView : PopupView
 {
     [SerializeField] private TextMeshProUGUI chestStateText;
 
-    public void Setup(ChestView chestView)
+    public override void Setup(ChestView chestView)
     {
         
     }
