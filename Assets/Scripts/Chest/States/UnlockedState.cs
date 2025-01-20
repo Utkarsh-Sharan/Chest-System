@@ -1,12 +1,5 @@
 public class UnlockedState : IChestState
 {
-    private ChestView chestObject;
-
-    public UnlockedState(ChestView chestObject)
-    {
-        this.chestObject = chestObject;
-    }
-
     public void OnStateEnter()
     {
         
@@ -14,7 +7,7 @@ public class UnlockedState : IChestState
 
     public void OnClick(ChestView chestView)
     {
-        
+        chestView.ChangeState(ChestStates.Collected);
     }
 
     public void OnStateExit()

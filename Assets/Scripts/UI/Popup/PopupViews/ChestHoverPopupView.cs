@@ -12,7 +12,7 @@ public class ChestHoverPopupView : MonoBehaviour, PopupView
     public void Setup(ChestView chestView)
     {
         ChestScriptableObject chestData = chestView.GetChestData();
-        chestTypeText.text = $"This is a {chestData.ChestType} chest.";
+        chestTypeText.text = $"The {chestData.ChestType} chest.";
         coinRangeText.text = $"X {chestData.CoinRange.Min}-{chestData.CoinRange.Max}";
         gemRangeText.text = $"X {chestView.GetChestData().GemRange.Min}-{chestView.GetChestData().GemRange.Max}";
     }

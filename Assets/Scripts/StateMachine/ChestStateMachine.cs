@@ -7,9 +7,9 @@ public class ChestStateMachine
     private IChestState currentState;
     private Dictionary<ChestStates, IChestState> states = new Dictionary<ChestStates, IChestState>();
 
-    public ChestStateMachine(ChestView chestObject)
+    public ChestStateMachine()
     {
-        CreateStates(chestObject);
+        CreateStates();
     }
 
     public void OnClick(ChestView chestObject)
@@ -26,11 +26,11 @@ public class ChestStateMachine
         currentState.OnStateEnter();
     }
 
-    private void CreateStates(ChestView chestObject)
+    private void CreateStates()
     {
-        states.Add(ChestStates.Locked, new LockedState(chestObject));
-        states.Add(ChestStates.Unlocking, new UnlockingState(chestObject));
-        states.Add(ChestStates.Unlocked, new UnlockedState(chestObject));
-        states.Add(ChestStates.Collected, new CollectedState(chestObject));
+        states.Add(ChestStates.Locked, new LockedState());
+        states.Add(ChestStates.Unlocking, new UnlockingState());
+        states.Add(ChestStates.Unlocked, new UnlockedState());
+        states.Add(ChestStates.Collected, new CollectedState());
     }
 }

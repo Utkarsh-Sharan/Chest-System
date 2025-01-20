@@ -1,12 +1,5 @@
 public class LockedState : IChestState
 {
-    private ChestView chestObject;
-
-    public LockedState(ChestView chestObject)
-    {
-        this.chestObject = chestObject;
-    }
-
     public void OnStateEnter()
     {
         

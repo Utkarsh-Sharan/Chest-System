@@ -13,6 +13,7 @@ public class UIService : MonoBehaviour
     [SerializeField] private List<PopupScriptableObject> popupSO;
 
     private Dictionary<PopupType, GameObject> instantiatedPopups;
+    private GameObject currentlyOpenedPopup;
 
     private void Start()
     {
@@ -34,26 +35,29 @@ public class UIService : MonoBehaviour
 
     public void OpenPopupOfType(PopupType popupType, ChestView chestView)
     {
+        currentlyOpenedPopup = instantiatedPopups[popupType];
+        currentlyOpenedPopup.SetActive(true);
         //take reference of currently open popup.
-        foreach (var popup in instantiatedPopups)
-        {
-            GameObject popupInstance = popup.Value;
-            if(popup.Key == popupType)
-            {
-                popupInstance.SetActive(true);
-                popupInstance.GetComponent<PopupView>().Setup(chestView);
-            }
-            else
-                popupInstance.SetActive(false);
-        }
+        //foreach (var popup in instantiatedPopups)
+        //{
+        //    GameObject popupInstance = popup.Value;
+        //    if(popup.Key == popupType)
+        //    {
+        //        popupInstance.SetActive(true);
+        //        popupInstance.GetComponent<PopupView>().Setup(chestView);
+        //    }
+        //    else
+        //        popupInstance.SetActive(false);
+        //}
     }
 
     public void CloseAllPopups()
     {
-        foreach (var popup in instantiatedPopups)
-        {
-            GameObject popupInstance = popup.Value;
-            popupInstance.SetActive(false);
-        }
+        currentlyOpenedPopup.SetActive(false);
+        //foreach (var popup in instantiatedPopups)
+        //{
+        //    GameObject popupInstance = popup.Value;
+        //    popupInstance.SetActive(false);
+        //}
     }
 }
