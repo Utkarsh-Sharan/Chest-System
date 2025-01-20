@@ -35,20 +35,15 @@ public class UIService : MonoBehaviour
 
     public void OpenPopupOfType(PopupType popupType, ChestView chestView)
     {
-        currentlyOpenedPopup = instantiatedPopups[popupType];
-        currentlyOpenedPopup.SetActive(true);
-        //take reference of currently open popup.
-        //foreach (var popup in instantiatedPopups)
-        //{
-        //    GameObject popupInstance = popup.Value;
-        //    if(popup.Key == popupType)
-        //    {
-        //        popupInstance.SetActive(true);
-        //        popupInstance.GetComponent<PopupView>().Setup(chestView);
-        //    }
-        //    else
-        //        popupInstance.SetActive(false);
-        //}
+        if(!currentlyOpenedPopup)
+            currentlyOpenedPopup.SetActive(false);
+        
+        if(instantiatedPopups.TryGetValue(popupType, out GameObject popupObject))
+        {
+            currentlyOpenedPopup = popupObject;
+            currentlyOpenedPopup.SetActive(true);
+            currentlyOpenedPopup.GetComponent<PopupView>().Setup(chestView);
+        }
     }
 
     public void CloseAllPopups()
