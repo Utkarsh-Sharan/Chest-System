@@ -6,5 +6,5 @@ using UnityEngine;
 public class PopupScriptableObject : ScriptableObject
 {
     public PopupType PopupType;
-    public GameObject PopupObject;
+    public PopupView PopupView;
 }

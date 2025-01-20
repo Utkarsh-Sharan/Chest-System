@@ -14,6 +14,6 @@ public class ChestHoverPopupView : PopupView
         ChestScriptableObject chestData = chestView.GetChestData();
         chestTypeText.text = $"The {chestData.ChestType} chest.";
         coinRangeText.text = $"X {chestData.CoinRange.Min}-{chestData.CoinRange.Max}";
-        gemRangeText.text = $"X {chestView.GetChestData().GemRange.Min}-{chestView.GetChestData().GemRange.Max}";
+        gemRangeText.text = $"X {chestData.GemRange.Min}-{chestData.GemRange.Max}";
     }
 }

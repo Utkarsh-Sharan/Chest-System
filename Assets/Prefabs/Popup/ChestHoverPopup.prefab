@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 231442106721935263}
   - component: {fileID: 6152441802964162199}
   m_Layer: 5
-  m_Name: ChestHoverContent
+  m_Name: ChestHoverPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

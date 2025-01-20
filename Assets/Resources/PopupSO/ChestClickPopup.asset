@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ChestClickPopup
   m_EditorClassIdentifier: 
   PopupType: 1
-  PopupObject: {fileID: 8919798322951432956, guid: d7f2929ffb596df49a14d177c5082777, type: 3}
+  PopupView: {fileID: -3955939442490638900, guid: d7f2929ffb596df49a14d177c5082777, type: 3}

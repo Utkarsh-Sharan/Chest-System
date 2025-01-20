@@ -22,10 +22,9 @@ public class UIService : MonoBehaviour
 
         foreach (PopupScriptableObject popup in popupSO)
         {
-            GameObject instantiatedPopupObject = Instantiate(popup.PopupObject, popupPanel.transform.position, Quaternion.identity, popupPanel.transform);
-            PopupView instantiatedPopupView = instantiatedPopupObject.GetComponent<PopupView>();
+            PopupView instantiatedPopupView = Instantiate(popup.PopupView, popupPanel.transform.position, Quaternion.identity, popupPanel.transform);
 
-            instantiatedPopupObject.SetActive(false);
+            instantiatedPopupView.gameObject.SetActive(false);
             instantiatedPopups.Add(popup.PopupType, instantiatedPopupView);
         }
     }

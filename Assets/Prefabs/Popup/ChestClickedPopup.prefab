@@ -938,7 +938,7 @@ GameObject:
   - component: {fileID: 6345973994166034478}
   - component: {fileID: -3955939442490638900}
   m_Layer: 5
-  m_Name: ChestClickedContent
+  m_Name: ChestClickedPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
