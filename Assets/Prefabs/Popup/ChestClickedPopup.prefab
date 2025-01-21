@@ -957,8 +957,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3246557049803268272}
-  - {fileID: 3994721408647789522}
   - {fileID: 5022504542970463869}
+  - {fileID: 3994721408647789522}
   - {fileID: 8430484082687803382}
   - {fileID: 4290053842233160968}
   m_Father: {fileID: 0}
@@ -981,3 +981,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestStateText: {fileID: 6628260531980026745}
+  closeButton: {fileID: 6300246728013308375}
+  startTimerButton: {fileID: 2728870235524999159}
+  unlockWithGemsButton: {fileID: 7692907572533483477}

@@ -12,6 +12,14 @@ public class ChestStateMachine
         CreateStates();
     }
 
+    private void CreateStates()
+    {
+        states.Add(ChestStates.Locked, new LockedState());
+        states.Add(ChestStates.Unlocking, new UnlockingState());
+        states.Add(ChestStates.Unlocked, new UnlockedState());
+        states.Add(ChestStates.Collected, new CollectedState());
+    }
+
     public void OnClick(ChestView chestObject)
     {
         currentState.OnClick(chestObject);
@@ -24,13 +32,5 @@ public class ChestStateMachine
         currentState?.OnStateExit();
         currentState = newState;
         currentState.OnStateEnter();
-    }
-
-    private void CreateStates()
-    {
-        states.Add(ChestStates.Locked, new LockedState());
-        states.Add(ChestStates.Unlocking, new UnlockingState());
-        states.Add(ChestStates.Unlocked, new UnlockedState());
-        states.Add(ChestStates.Collected, new CollectedState());
     }
 }

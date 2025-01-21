@@ -34,7 +34,7 @@ public class UIService : MonoBehaviour
         GameService.Instance.ChestService.CreateRandomChest();
     }
 
-    public void OpenPopupOfType(PopupType popupType, ChestView chestView)
+    public void OpenPopup(PopupType popupType, ChestView chestView)
     {
         if(currentlyOpenedPopup != null)
             currentlyOpenedPopup.gameObject.SetActive(false);

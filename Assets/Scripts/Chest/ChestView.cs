@@ -44,4 +44,9 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     public ChestScriptableObject GetChestData() => chestSO;
 
     public void ChangeState(ChestStates newState) => chestController.ChangeState(newState);
+
+    public void StartTimer()
+    {
+        chestController.StartTimer(this);
+    }
 }

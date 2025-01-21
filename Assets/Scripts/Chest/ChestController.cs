@@ -29,7 +29,7 @@ public class ChestController : MonoBehaviour
 
     public void OnMouseHover(ChestView chestView)
     {
-        GameService.Instance.UIService.OpenPopupOfType(PopupType.Chest_Hover_Popup, chestView);
+        GameService.Instance.UIService.OpenPopup(PopupType.Chest_Hover_Popup, chestView);
     }
 
     public void OnMouseClick(ChestView chestView)
@@ -50,4 +50,9 @@ public class ChestController : MonoBehaviour
     }
 
     public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);
+
+    public void StartTimer(ChestView chestView)
+    {
+
+    }
 }
