@@ -24,6 +24,7 @@ public class ChestClickedPopupView : PopupView
 
     private void StartTimer()
     {
+        chestView.ChangeState(ChestStates.Unlocking);
         chestView.StartTimer();
         this.gameObject.SetActive(false);
     }

@@ -44,15 +44,10 @@ public class ChestController : MonoBehaviour
         stateMachine.OnClick(chestView);
     }
 
-    public void OnMouseLeave(ChestView chestView)
+    public void OnMouseLeave()
     {
         GameService.Instance.UIService.CloseHoverPopup();
     }
 
     public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);
-
-    public void StartTimer(ChestView chestView)
-    {
-
-    }
 }
