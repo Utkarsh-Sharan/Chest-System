@@ -16,6 +16,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     private int unlockTime;     //timer in seconds
 
     private ChestController chestController;
+    private ChestStateMachine stateMachine;
 
     private Coroutine timerCoroutine;
     private int hours, minutes, seconds, totalSeconds;
@@ -32,6 +33,9 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         this.unlockTime = chestSO.UnlockTime;
 
         chestStateText.text = "Locked";
+
+        stateMachine = new ChestStateMachine();
+        stateMachine.ChangeState(ChestStates.Locked);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -41,7 +45,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        chestController.OnMouseClick(this);
+        stateMachine.OnClick(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -53,7 +57,17 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
     public void StartTimer()
     {
-        if(timerCoroutine != null)
+        if (chestController.IsAnotherChestUnlocking())
+        {
+            //show cannot start timer popup
+            Debug.Log("Another chest unlocking!");
+            return;
+        }
+
+        chestController.SetUnlockingChest(this);
+        this.ChangeState(ChestStates.Unlocking);
+
+        if (timerCoroutine != null)
             StopCoroutine(timerCoroutine);
 
         timerCoroutine = StartCoroutine(TimerCoroutine(unlockTime));
@@ -70,6 +84,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
             yield return null;
         }
 
+        chestController.ClearUnlockingChest();
         chestStateText.text = "Collect";
         ChangeState(ChestStates.Unlocked);
     }
@@ -84,5 +99,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         chestStateText.text = $"{hours}:{minutes}:{seconds}";
     }
 
-    public void ChangeState(ChestStates newState) => chestController.ChangeState(newState);
+    public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);
+
+    public void Destroy() => Destroy(this.gameObject);
 }

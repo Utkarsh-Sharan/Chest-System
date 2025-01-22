@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class ChestController : MonoBehaviour
 {
     [SerializeField] private ChestView chestView;
-    private ChestStateMachine stateMachine;
+    private ChestView unlockingChest;
 
     public void CreateRandomChest(List<ChestScriptableObject> chestSO)
     {
@@ -18,13 +18,6 @@ public class ChestController : MonoBehaviour
         chestObject.InitializeChestData(this, randomChestSO);
 
         GameService.Instance.SlotService.AddChestToSlot(chestObject);
-        SetChestInitialState();
-    }
-
-    private void SetChestInitialState()
-    {
-        stateMachine = new ChestStateMachine();
-        stateMachine.ChangeState(ChestStates.Locked);
     }
 
     public void OnMouseHover(ChestView chestView)
@@ -32,22 +25,14 @@ public class ChestController : MonoBehaviour
         GameService.Instance.UIService.OpenPopup(PopupType.Chest_Hover_Popup, chestView);
     }
 
-    public void OnMouseClick(ChestView chestView)
-    {
-        //close popup showing chest stats.
-
-        //decided on the basis of STATE in which the chest is. If the chest is-
-        //LOCKED    - then on click, popup to show Start Timer and Unlock with gems button.
-        //UNLOCKING - then on click, popup to show Unlock with gems button only.
-        //UNLOCKED  - then on click, change chest's state to COLLECTED.
-        //COLLECTED - simply destroy This chest and change slot's state to EMPTY.
-        stateMachine.OnClick(chestView);
-    }
-
     public void OnMouseLeave()
     {
         GameService.Instance.UIService.CloseHoverPopup();
     }
 
-    public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);
+    public bool IsAnotherChestUnlocking() => unlockingChest != null;
+
+    public void SetUnlockingChest(ChestView chestView) => unlockingChest = chestView;
+
+    public void ClearUnlockingChest() => unlockingChest = null;
 }

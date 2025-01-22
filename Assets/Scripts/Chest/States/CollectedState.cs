@@ -7,7 +7,7 @@ public class CollectedState : IChestState
 
     public void OnClick(ChestView chestView)
     {
-        
+        chestView.Destroy();
     }
 
     public void OnStateExit()

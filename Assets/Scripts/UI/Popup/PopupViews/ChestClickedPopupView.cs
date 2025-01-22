@@ -11,20 +11,17 @@ public class ChestClickedPopupView : PopupView
     [SerializeField] private Button startTimerButton;
     [SerializeField] private Button unlockWithGemsButton;
 
-    private ChestView chestView;
-
     public override void Setup(ChestView chestView)
     {
-        this.chestView = chestView;
-
         chestStateText.text = "Chest is currently Locked!";
         closeButton.onClick.AddListener(ClosePopup);
-        startTimerButton.onClick.AddListener(StartTimer);
+
+        startTimerButton.onClick.RemoveAllListeners();
+        startTimerButton.onClick.AddListener(() => StartTimer(chestView));
     }
 
-    private void StartTimer()
+    private void StartTimer(ChestView chestView)
     {
-        chestView.ChangeState(ChestStates.Unlocking);
         chestView.StartTimer();
         this.gameObject.SetActive(false);
     }
