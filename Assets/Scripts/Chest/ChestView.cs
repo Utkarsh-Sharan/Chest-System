@@ -13,7 +13,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     private ChestType chestType;
     private RangeInt coinRange;
     private RangeInt gemRange;
-    private int unlockTime;     //timer in seconds
+    private int unlockTime;     //timer in minutes
 
     private ChestController chestController;
     private ChestStateMachine stateMachine;
@@ -96,7 +96,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         minutes = (totalSeconds % 3600) / 60;
         seconds = totalSeconds % 60;
 
-        chestStateText.text = $"{hours}:{minutes}:{seconds}";
+        chestStateText.text = $"{hours:00}:{minutes:00}:{seconds:00}";
     }
 
     public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);

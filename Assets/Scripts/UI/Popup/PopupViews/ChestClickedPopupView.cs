@@ -23,6 +23,6 @@ public class ChestClickedPopupView : PopupView
     private void StartTimer(ChestView chestView)
     {
         chestView.StartTimer();
-        this.gameObject.SetActive(false);
+        ClosePopup();
     }
 }
