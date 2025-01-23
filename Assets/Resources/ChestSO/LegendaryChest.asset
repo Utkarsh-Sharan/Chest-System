@@ -20,4 +20,4 @@ MonoBehaviour:
   GemRange:
     Min: 80
     Max: 100
-  UnlockTime: 10
+  UnlockTime: 0

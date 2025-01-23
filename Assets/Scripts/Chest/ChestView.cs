@@ -99,6 +99,8 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         chestStateText.text = $"{hours:00}:{minutes:00}:{seconds:00}";
     }
 
+    public int GetCurrentTime() => (hours * 60 + minutes);
+
     public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);
 
     public void Destroy() => Destroy(this.gameObject);

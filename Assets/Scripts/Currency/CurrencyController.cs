@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CurrencyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TextMeshProUGUI currentCoinsText;
+    [SerializeField] private TextMeshProUGUI currentGemsText;
+    private int coinValue = 0 , gemValue = 0;
+    private const int minutesPerGem = 10;
+
+    public void CollectReward(ChestView chestView)
     {
-        
+        ChestScriptableObject chestData = chestView.GetChestData();
+
+        coinValue += chestData.CoinRange.GetRandomValue();
+        gemValue += chestData.GemRange.GetRandomValue();
+
+        UpdateCurrency();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UnlockChestWithGems(ChestView chestView)
     {
-        
+        int chestTimeToUnlock = (int)Mathf.Ceil(chestView.GetCurrentTime() / minutesPerGem);
+        gemValue -= chestTimeToUnlock;
+
+        UpdateCurrency();
+    }
+
+    private void UpdateCurrency()
+    {
+        currentCoinsText.text = $"{coinValue}";
+        currentGemsText.text = $"{gemValue}";
     }
 }

@@ -7,6 +7,7 @@ public class CollectedState : IChestState
 
     public void OnClick(ChestView chestView)
     {
+        GameService.Instance.CurrencyService.ChestCollected(chestView);
         chestView.Destroy();
     }
 

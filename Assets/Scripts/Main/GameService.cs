@@ -17,12 +17,15 @@ public class GameService : GenericMonoSingleton<GameService>
     [Header("Slot properties")]
     [SerializeField] private SlotController slotController;
 
+    [Header("Currency properties")]
+    [SerializeField] private CurrencyController currencyController;
+
     protected override void Awake()
     {
         base.Awake();
 
         SlotService = new SlotService(slotController);
         ChestService = new ChestService(chestSO, chestController);
-        CurrencyService = new CurrencyService();
+        CurrencyService = new CurrencyService(currencyController);
     }
 }
