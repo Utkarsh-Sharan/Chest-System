@@ -43,6 +43,18 @@ public class SlotController : MonoBehaviour
         UpdateSlotState(currentIndex, SlotState.Occupied);
     }
 
+    public void RemoveChestFromSlot(ChestView chestObject)
+    {
+        for (int i = 0; i < slots.Count; ++i)
+        {
+            if (slots[i].transform == chestObject.transform.parent)
+            {
+                UpdateSlotState(i, SlotState.Empty);
+                return;
+            }
+        }
+    }
+
     private Transform GetSlotTransform(int index) => slots[index].transform;
 
     private void UpdateSlotState(int index, SlotState state) => slots[index].SetSlotState(state);
