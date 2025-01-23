@@ -10,4 +10,15 @@ public abstract class PopupView : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    protected void BuyChest(ChestView chestView)
+    {
+        if (GameService.Instance.CurrencyService.IsSuffecientGemsAvailable(chestView))
+        {
+            chestView.ChangeState(ChestStates.Unlocked);
+            chestView.SetChestStateText("Collect");
+        }
+
+        ClosePopup();
+    }
 }

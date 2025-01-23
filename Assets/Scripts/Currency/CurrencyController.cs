@@ -7,7 +7,7 @@ public class CurrencyController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI currentCoinsText;
     [SerializeField] private TextMeshProUGUI currentGemsText;
-    private int coinValue = 0 , gemValue = 0;
+    private int coinValue = 0 , gemValue = 0, chestTimeToGems;
     private const int minutesPerGem = 10;
 
     public void CollectReward(ChestView chestView)
@@ -20,11 +20,27 @@ public class CurrencyController : MonoBehaviour
         UpdateCurrency();
     }
 
-    public void UnlockChestWithGems(ChestView chestView)
+    public bool IsSuffecientGemsAvailable(ChestView chestView)
     {
-        int chestTimeToUnlock = (int)Mathf.Ceil(chestView.GetCurrentTime() / minutesPerGem);
-        gemValue -= chestTimeToUnlock;
+        if (chestView.GetChestState() == ChestStates.Locked)
+            chestTimeToGems = (int)Mathf.Ceil(chestView.GetChestData().UnlockTime / (float)minutesPerGem);
+        else
+            chestTimeToGems = (int)Mathf.Ceil(chestView.GetCurrentTime() / (float)minutesPerGem);
 
+        if (chestTimeToGems <= gemValue)
+        {
+            UnlockChestWithGems(chestTimeToGems);
+            return true;
+        }
+
+        //popup showing not enough gems.
+        Debug.Log("Not enough gems!");
+        return false;
+    }
+
+    private void UnlockChestWithGems(int chestTimeToGems)
+    {
+        gemValue -= chestTimeToGems;
         UpdateCurrency();
     }
 

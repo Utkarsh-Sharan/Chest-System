@@ -33,4 +33,15 @@ public class ChestStateMachine
         currentState = newState;
         currentState.OnStateEnter();
     }
+
+    public ChestStates GetCurrentState()
+    {
+        foreach (var statePair in states)
+        {
+            if (statePair.Value == currentState)
+                return statePair.Key;
+        }
+
+        return ChestStates.Locked;
+    }
 }

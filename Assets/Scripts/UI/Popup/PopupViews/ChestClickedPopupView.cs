@@ -18,6 +18,8 @@ public class ChestClickedPopupView : PopupView
 
         startTimerButton.onClick.RemoveAllListeners();
         startTimerButton.onClick.AddListener(() => StartTimer(chestView));
+        unlockWithGemsButton.onClick.RemoveAllListeners();
+        unlockWithGemsButton.onClick.AddListener(() => BuyChest(chestView));
     }
 
     private void StartTimer(ChestView chestView)

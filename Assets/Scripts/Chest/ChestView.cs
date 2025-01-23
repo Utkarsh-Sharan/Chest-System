@@ -79,6 +79,8 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
         while (remainingTime > 0)
         {
+            if (GetChestState() == ChestStates.Unlocked) break;
+
             UpdateTimerUI(remainingTime);
             remainingTime -= Time.deltaTime;
             yield return null;
@@ -102,6 +104,10 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     public int GetCurrentTime() => (hours * 60 + minutes);
 
     public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);
+
+    public ChestStates GetChestState() => stateMachine.GetCurrentState();
+
+    public void SetChestStateText(string text) => chestStateText.text = text;
 
     public void Destroy() => Destroy(this.gameObject);
 }
