@@ -8,7 +8,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 {
     private ChestScriptableObject chestSO;
 
-    [SerializeField] private TextMeshProUGUI chestStateText;
+    [SerializeField] private TextMeshProUGUI chestStateText;//x
     [SerializeField] private Image chestImage;
     private ChestType chestType;
     private RangeInt coinRange;
@@ -16,7 +16,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     private int unlockTime;     //timer in minutes
 
     private ChestController chestController;
-    private ChestStateMachine stateMachine;
+    private ChestStateMachine stateMachine;//x
 
     private Coroutine timerCoroutine;
     private int hours, minutes, seconds, totalSeconds;
@@ -32,25 +32,25 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         this.gemRange = chestSO.GemRange;
         this.unlockTime = chestSO.UnlockTime;
 
-        chestStateText.text = "Locked";
+        chestStateText.text = "Locked";//x
 
-        stateMachine = new ChestStateMachine();
-        stateMachine.ChangeState(ChestStates.Locked);
+        stateMachine = new ChestStateMachine();//x
+        stateMachine.ChangeState(ChestStates.Locked);//x
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        chestController.OnMouseHover(this);
+        GameService.Instance.UIService.OpenPopup(PopupType.Chest_Hover_Popup, this);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)//x
     {
-        stateMachine.OnClick(this);
+        //stateMachine.OnClick(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        chestController.OnMouseLeave();
+        GameService.Instance.UIService.CloseHoverPopup();
     }
 
     public ChestScriptableObject GetChestData() => chestSO;
@@ -65,7 +65,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         }
 
         chestController.SetUnlockingChest(this);
-        this.ChangeState(ChestStates.Unlocking);
+        this.ChangeState(ChestStates.Unlocking);//x
 
         if (timerCoroutine != null)
             StopCoroutine(timerCoroutine);
@@ -79,7 +79,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
         while (remainingTime > 0)
         {
-            if (GetChestState() == ChestStates.Unlocked) break;
+            if (GetChestState() == ChestStates.Unlocked) break;//x
 
             UpdateTimerUI(remainingTime);
             remainingTime -= Time.deltaTime;
@@ -87,8 +87,8 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         }
 
         chestController.ClearUnlockingChest();
-        chestStateText.text = "Collect";
-        ChangeState(ChestStates.Unlocked);
+        chestStateText.text = "Collect";//x
+        ChangeState(ChestStates.Unlocked);//x
     }
 
     private void UpdateTimerUI(float remainingTime)
@@ -98,14 +98,14 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         minutes = (totalSeconds % 3600) / 60;
         seconds = totalSeconds % 60;
 
-        chestStateText.text = $"{hours:00}:{minutes:00}:{seconds:00}";
+        chestStateText.text = $"{hours:00}:{minutes:00}:{seconds:00}";//x
     }
 
     public int GetCurrentTime() => (hours * 60 + minutes);
 
-    public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);
+    public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);//x
 
-    public ChestStates GetChestState() => stateMachine.GetCurrentState();
+    public ChestStates GetChestState() => stateMachine.GetCurrentState();//x
 
     public void SetChestStateText(string text) => chestStateText.text = text;
 

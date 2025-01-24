@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChestClickedPopupView : PopupView
+public class ChestUnlockingPopupView : PopupView
 {
     [SerializeField] private TextMeshProUGUI chestStateText;
     [SerializeField] private Button closeButton;
@@ -25,6 +25,17 @@ public class ChestClickedPopupView : PopupView
     private void StartTimer(ChestView chestView)
     {
         chestView.StartTimer();
+        ClosePopup();
+    }
+
+    private void BuyChest(ChestView chestView)
+    {
+        if (GameService.Instance.CurrencyService.IsSufficientGemsAvailable(chestView))
+        {
+            chestView.ChangeState(ChestStates.Unlocked);
+            chestView.SetChestStateText("Collect");
+        }
+
         ClosePopup();
     }
 }

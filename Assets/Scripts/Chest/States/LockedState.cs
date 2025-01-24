@@ -5,9 +5,10 @@ public class LockedState : IChestState
         
     }
 
-    public void OnClick(ChestView chestObject)
+    public void OnClick(ChestItem chestItem)
     {
-        GameService.Instance.UIService.OpenPopup(PopupType.Chest_Click_Popup, chestObject);
+        ChestView chestView = chestItem.GetComponent<ChestView>();
+        GameService.Instance.UIService.OpenPopup(PopupType.Chest_Unlock_Popup, chestView);
     }
 
     public void OnStateExit()

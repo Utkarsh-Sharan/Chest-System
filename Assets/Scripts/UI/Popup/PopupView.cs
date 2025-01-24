@@ -5,21 +5,9 @@ using UnityEngine;
 public abstract class PopupView : MonoBehaviour 
 {
     public abstract void Setup(ChestView chestView);
-    public virtual void Setup(string message) { }
 
     protected void ClosePopup()
     {
         this.gameObject.SetActive(false);
-    }
-
-    protected void BuyChest(ChestView chestView)
-    {
-        if (GameService.Instance.CurrencyService.IsSuffecientGemsAvailable(chestView))
-        {
-            chestView.ChangeState(ChestStates.Unlocked);
-            chestView.SetChestStateText("Collect");
-        }
-
-        ClosePopup();
     }
 }

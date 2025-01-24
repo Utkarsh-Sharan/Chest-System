@@ -11,6 +11,4 @@ public class MessagePopupView : PopupView
     {
         
     }
-
-    public override void Setup(string message) => messageText.text = message;
 }

@@ -13,5 +13,5 @@ public class CurrencyService
 
     public void ChestCollected(ChestView chestView) => currencyController.CollectReward(chestView);
 
-    public bool IsSuffecientGemsAvailable(ChestView chestView) => currencyController.IsSuffecientGemsAvailable(chestView);
+    public bool IsSufficientGemsAvailable(ChestView chestView) => currencyController.IsSuffecientGemsAvailable(chestView);
 }

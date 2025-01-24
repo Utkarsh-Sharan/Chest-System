@@ -20,7 +20,7 @@ public class CurrencyController : MonoBehaviour
         UpdateCurrency();
     }
 
-    public bool IsSuffecientGemsAvailable(ChestView chestView)
+    public bool IsSuffecientGemsAvailable(ChestView chestView)//just pass the data, not whole view
     {
         if (chestView.GetChestState() == ChestStates.Locked)
             chestTimeToGems = (int)Mathf.Ceil(chestView.GetChestData().UnlockTime / (float)minutesPerGem);
