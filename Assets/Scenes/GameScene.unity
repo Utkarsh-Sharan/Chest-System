@@ -1592,12 +1592,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateChestButton: {fileID: 989809123}
+  messageToasterText: {fileID: 4581946510780522695, guid: 0fdd6df7a4790b04e9cac281087d8402, type: 3}
   popupPanel: {fileID: 1641925317}
   popupSO:
   - {fileID: 11400000, guid: 1aedf94167fac744dae7ab8f257d1bde, type: 2}
   - {fileID: 11400000, guid: 414ccafc722562c41b6032b29228ccdd, type: 2}
   - {fileID: 11400000, guid: 0cd788d21c70d40488a088c3dd46c2d3, type: 2}
-  - {fileID: 11400000, guid: 204fd22ff6adf844e83b3c4a002863a2, type: 2}
 --- !u!1 &2000523877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,7 +1890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestView: {fileID: 6232566782523013107, guid: f424d1e29b1557e42b4533daa4c3d40c, type: 3}
-  chestItem: {fileID: -949642063527892164, guid: f424d1e29b1557e42b4533daa4c3d40c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -26,8 +26,7 @@ public class CurrencyController : MonoBehaviour
             return true;
         }
 
-        //popup showing not enough gems.
-        Debug.Log("Not enough gems!");
+        GameService.Instance.UIService.ShowMessage("Not enough gems!");
         return false;
     }
 

@@ -34,8 +34,7 @@ public class ChestItem : MonoBehaviour, IPointerClickHandler
     {
         if (chestController.IsAnotherChestUnlocking())
         {
-            //show cannot start timer popup
-            Debug.Log("Another chest unlocking!");
+            GameService.Instance.UIService.ShowMessage("Another chest is unlocking!");
             return;
         }
 

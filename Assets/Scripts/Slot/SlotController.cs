@@ -30,8 +30,8 @@ public class SlotController : MonoBehaviour
                 return true;
             }
         }
-        
-        Debug.Log("No available slots to create a chest.");
+
+        GameService.Instance.UIService.ShowMessage("No slots available, try later!");
         return false;
     }
 
@@ -47,14 +47,6 @@ public class SlotController : MonoBehaviour
     public void RemoveChestFromSlot(int index)
     {
         UpdateSlotState(index, SlotState.Empty);
-        //for (int i = 0; i < slots.Count; ++i)
-        //{
-        //    if (slots[i].transform == chestObject.transform.parent)
-        //    {
-        //        UpdateSlotState(i, SlotState.Empty);
-        //        return;
-        //    }
-        //}
     }
 
     private Transform GetSlotTransform(int index) => slots[index].transform;

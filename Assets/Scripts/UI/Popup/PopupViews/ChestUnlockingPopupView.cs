@@ -10,6 +10,7 @@ public class ChestUnlockingPopupView : PopupView
     [SerializeField] private Button closeButton;
     [SerializeField] private Button startTimerButton;
     [SerializeField] private Button unlockWithGemsButton;
+    [SerializeField] private TextMeshProUGUI unlockWithGemsText;
     private int chestTimeToGems;
     private ChestItem chestItem;
 
@@ -31,6 +32,7 @@ public class ChestUnlockingPopupView : PopupView
             chestTimeToGems = (int)Mathf.Ceil(chestItem.GetCurrentTime() / (float)minutesPerGem);
 
         chestStateText.text = "Chest is currently Locked!";
+        unlockWithGemsText.text = $"Unlock with {chestTimeToGems}";
     }
 
     private void StartTimer()
