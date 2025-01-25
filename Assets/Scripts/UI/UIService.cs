@@ -34,7 +34,7 @@ public class UIService : MonoBehaviour
         GameService.Instance.ChestService.CreateRandomChest();
     }
 
-    public void OpenPopup(PopupType popupType, ChestView chestView)
+    public void OpenPopup(PopupType popupType, ChestScriptableObject chestData, ChestItem chestItem)
     {
         if(currentlyOpenedPopup != null)
             currentlyOpenedPopup.gameObject.SetActive(false);
@@ -43,7 +43,7 @@ public class UIService : MonoBehaviour
         {
             currentlyOpenedPopup = popupObject;
             currentlyOpenedPopup.gameObject.SetActive(true);
-            currentlyOpenedPopup.Setup(chestView);
+            currentlyOpenedPopup.Setup(chestData, chestItem);
         }
     }
 

@@ -10,23 +10,16 @@ public class CurrencyController : MonoBehaviour
     private int coinValue = 0 , gemValue = 0, chestTimeToGems;
     private const int minutesPerGem = 10;
 
-    public void CollectReward(ChestView chestView)
+    public void CollectReward(int coins, int gems)
     {
-        ChestScriptableObject chestData = chestView.GetChestData();
-
-        coinValue += chestData.CoinRange.GetRandomValue();
-        gemValue += chestData.GemRange.GetRandomValue();
+        coinValue += coins;
+        gemValue += gems;
 
         UpdateCurrency();
     }
 
-    public bool IsSuffecientGemsAvailable(ChestView chestView)//just pass the data, not whole view
+    public bool IsSuffecientGemsAvailable(int chestTimeToGems)
     {
-        if (chestView.GetChestState() == ChestStates.Locked)
-            chestTimeToGems = (int)Mathf.Ceil(chestView.GetChestData().UnlockTime / (float)minutesPerGem);
-        else
-            chestTimeToGems = (int)Mathf.Ceil(chestView.GetCurrentTime() / (float)minutesPerGem);
-
         if (chestTimeToGems <= gemValue)
         {
             UnlockChestWithGems(chestTimeToGems);

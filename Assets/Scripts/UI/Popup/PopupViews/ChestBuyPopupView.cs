@@ -10,25 +10,31 @@ public class ChestBuyPopupView : PopupView
     [SerializeField] private Button closeButton;
     [SerializeField] private Button buyButton;
     private const int minutesPerGem = 10;
+    private int chestTimeToGems;
 
-    public override void Setup(ChestView chestView)
+    private void Start()
     {
-        if(chestView.GetChestState() == ChestStates.Locked)
-            chestUnlockText.text = $"Unlock with {(int)Mathf.Ceil(chestView.GetChestData().UnlockTime / (float)minutesPerGem)} gems?";    //static class utility
-        else
-            chestUnlockText.text = $"Unlock with {(int)Mathf.Ceil(chestView.GetCurrentTime() / (float)minutesPerGem)} gems?";
-
         closeButton.onClick.AddListener(ClosePopup);
-        buyButton.onClick.RemoveAllListeners();
         buyButton.onClick.AddListener(() => BuyChest(chestView));
     }
 
-    private void BuyChest(ChestView chestView)
+    public override void Setup(ChestScriptableObject chestData, ChestItem chestItem)
     {
-        if (GameService.Instance.CurrencyService.IsSufficientGemsAvailable(chestView))
+        if(chestItem.GetChestState() == ChestStates.Locked)
+            chestTimeToGems = (int)Mathf.Ceil(chestData.UnlockTime / (float)minutesPerGem);
+
+        else
+            chestTimeToGems = (int)Mathf.Ceil(chestItem.GetCurrentTime() / (float)minutesPerGem);
+
+        chestUnlockText.text = $"Unlock with {chestTimeToGems} gems?";
+    }
+
+    private void BuyChest(ChestItem chestItem)
+    {
+        if (GameService.Instance.CurrencyService.IsSufficientGemsAvailable(chestTimeToGems))
         {
-            chestView.ChangeState(ChestStates.Unlocked);
-            chestView.SetChestStateText("Collect");
+            chestItem.ChangeState(ChestStates.Unlocked);
+            chestItem.SetChestStateText("Collect");
         }
 
         ClosePopup();

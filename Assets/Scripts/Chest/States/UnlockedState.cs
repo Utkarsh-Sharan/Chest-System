@@ -1,5 +1,8 @@
 public class UnlockedState : IChestState
 {
+    private int coins, gems;
+    private int chestID;
+
     public void OnStateEnter()
     {
         
@@ -7,11 +10,15 @@ public class UnlockedState : IChestState
 
     public void OnClick(ChestItem chestItem)
     {
-        ChestView chestView = chestItem.GetComponent<ChestView>();
-        GameService.Instance.CurrencyService.ChestCollected(chestView);  //only pass data, not the whole view.
-        GameService.Instance.SlotService.RemoveChestFromSlot(chestView);
+        coins = chestItem.GetChestData().CoinRange.GetRandomValue();
+        gems = chestItem.GetChestData().GemRange.GetRandomValue();
+        chestID = chestItem.GetID();
+
+        GameService.Instance.CurrencyService.ChestCollected(coins, gems);
+        GameService.Instance.SlotService.RemoveChestFromSlot(chestID);
         GameService.Instance.UIService.CloseHoverPopup();
-        chestView.Destroy();
+
+        chestItem.Destroy();
     }
 
     public void OnStateExit()
