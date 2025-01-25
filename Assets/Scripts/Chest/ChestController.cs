@@ -17,17 +17,8 @@ public class ChestController : MonoBehaviour
         ChestView chestObject = Instantiate(chestView);
         chestObject.InitializeChestData(this, randomChestSO);
 
-        GameService.Instance.SlotService.AddChestToSlot(chestObject);
-    }
-
-    public void OnMouseHover(ChestView chestView)
-    {
-        GameService.Instance.UIService.OpenPopup(PopupType.Chest_Hover_Popup, chestView);
-    }
-
-    public void OnMouseLeave()
-    {
-        GameService.Instance.UIService.CloseHoverPopup();
+        int chestID = GameService.Instance.SlotService.AddChestToSlot(chestObject);
+        chestObject.SetChestID(chestID);
     }
 
     public bool IsAnotherChestUnlocking() => unlockingChest != null;

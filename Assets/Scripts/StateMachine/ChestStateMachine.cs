@@ -17,12 +17,11 @@ public class ChestStateMachine
         states.Add(ChestStates.Locked, new LockedState());
         states.Add(ChestStates.Unlocking, new UnlockingState());
         states.Add(ChestStates.Unlocked, new UnlockedState());
-        states.Add(ChestStates.Collected, new CollectedState());
     }
 
-    public void OnClick(ChestView chestObject)
+    public void OnClick(ChestItem chestItem)
     {
-        currentState.OnClick(chestObject);
+        currentState.OnClick(chestItem);
     }
 
     public void ChangeState(ChestStates newState) => ChangeState(states[newState]);
@@ -32,5 +31,16 @@ public class ChestStateMachine
         currentState?.OnStateExit();
         currentState = newState;
         currentState.OnStateEnter();
+    }
+
+    public ChestStates GetCurrentState()
+    {
+        foreach (var statePair in states)
+        {
+            if (statePair.Value == currentState)
+                return statePair.Key;
+        }
+
+        return ChestStates.Locked;
     }
 }

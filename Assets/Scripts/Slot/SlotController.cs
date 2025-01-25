@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlotController : MonoBehaviour
 {
     [SerializeField] private int maximumSlots;
-    [SerializeField] private GameObject emptySlotObject;
+    [SerializeField] private GameObject emptySlotPrefab;
     private List<SlotItem> slots = new List<SlotItem>();
 
     private int currentIndex;
@@ -14,7 +14,7 @@ public class SlotController : MonoBehaviour
     {
         for (int i = 0; i < maximumSlots; ++i)
         {
-            GameObject slotObject = Instantiate(emptySlotObject, this.transform);
+            GameObject slotObject = Instantiate(emptySlotPrefab, this.transform);
             SlotItem slotItem = slotObject.GetComponent<SlotItem>();
             slots.Add(slotItem);
         }
@@ -30,17 +30,23 @@ public class SlotController : MonoBehaviour
                 return true;
             }
         }
-        //debug(and other ops) over here if not present.
-        Debug.Log("No available slots to create a chest.");
+
+        GameService.Instance.UIService.ShowMessage("No slots available, try later!");
         return false;
     }
 
-    public void AddChestToSlot(ChestView chestObject)
+    public int AddChestToSlot(ChestView chestObject)
     {
         chestObject.transform.SetParent(GetSlotTransform(currentIndex));
         chestObject.transform.localPosition = Vector3.zero;
 
         UpdateSlotState(currentIndex, SlotState.Occupied);
+        return currentIndex;
+    }
+
+    public void RemoveChestFromSlot(int index)
+    {
+        UpdateSlotState(index, SlotState.Empty);
     }
 
     private Transform GetSlotTransform(int index) => slots[index].transform;

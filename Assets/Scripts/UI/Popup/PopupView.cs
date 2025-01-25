@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class PopupView : MonoBehaviour 
 {
-    public abstract void Setup(ChestView chestView);
+    protected const int minutesPerGem = 10;
+
+    public abstract void Setup(ChestScriptableObject chestData, ChestItem chestItem);
 
     protected void ClosePopup()
     {

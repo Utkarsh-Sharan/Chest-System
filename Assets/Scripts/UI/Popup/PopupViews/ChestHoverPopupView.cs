@@ -9,9 +9,8 @@ public class ChestHoverPopupView : PopupView
     [SerializeField] private TextMeshProUGUI coinRangeText;
     [SerializeField] private TextMeshProUGUI gemRangeText;
 
-    public override void Setup(ChestView chestView)
+    public override void Setup(ChestScriptableObject chestData, ChestItem chestItem)
     {
-        ChestScriptableObject chestData = chestView.GetChestData();
         chestTypeText.text = $"The {chestData.ChestType} chest.";
         coinRangeText.text = $"X {chestData.CoinRange.Min}-{chestData.CoinRange.Max}";
         gemRangeText.text = $"X {chestData.GemRange.Min}-{chestData.GemRange.Max}";

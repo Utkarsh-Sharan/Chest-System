@@ -11,5 +11,7 @@ public class SlotService
 
     public bool IsEmptySlotAvailable() => slotController.IsEmptySlotAvailable();
 
-    public void AddChestToSlot(ChestView chestObject) => slotController.AddChestToSlot(chestObject);
+    public int AddChestToSlot(ChestView chestObject) => slotController.AddChestToSlot(chestObject);
+
+    public void RemoveChestFromSlot(int index) => slotController.RemoveChestFromSlot(index);
 }

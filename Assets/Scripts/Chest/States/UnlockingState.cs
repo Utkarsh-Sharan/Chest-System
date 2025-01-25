@@ -5,9 +5,10 @@ public class UnlockingState : IChestState
         
     }
 
-    public void OnClick(ChestView chestView)
+    public void OnClick(ChestItem chestItem)
     {
-        GameService.Instance.UIService.OpenPopup(PopupType.Chest_Buy_Popup, chestView);
+        ChestScriptableObject chestData = chestItem.GetChestData();
+        GameService.Instance.UIService.OpenPopup(PopupType.Chest_Buy_Popup, chestData, chestItem);
     }
 
     public void OnStateExit()

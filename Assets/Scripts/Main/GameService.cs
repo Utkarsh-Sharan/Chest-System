@@ -6,6 +6,7 @@ public class GameService : GenericMonoSingleton<GameService>
 {
     public SlotService SlotService { get; private set; }
     public ChestService ChestService { get; private set; }
+    public CurrencyService CurrencyService { get; private set; }
     [SerializeField] private UIService uiService;
     public UIService UIService => uiService;
 
@@ -16,12 +17,15 @@ public class GameService : GenericMonoSingleton<GameService>
     [Header("Slot properties")]
     [SerializeField] private SlotController slotController;
 
+    [Header("Currency properties")]
+    [SerializeField] private CurrencyController currencyController;
+
     protected override void Awake()
     {
         base.Awake();
 
         SlotService = new SlotService(slotController);
         ChestService = new ChestService(chestSO, chestController);
-
+        CurrencyService = new CurrencyService(currencyController);
     }
 }
