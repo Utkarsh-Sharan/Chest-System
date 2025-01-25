@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ChestItem : MonoBehaviour, IPointerClickHandler
 {
-    private int chestID;//related to slot.
+    private int chestID;
     [SerializeField] private ChestView chestView;
     private ChestStateMachine stateMachine;
     private ChestController chestController;

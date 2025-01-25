@@ -44,7 +44,7 @@ public class SlotController : MonoBehaviour
         return currentIndex;
     }
 
-    public void RemoveChestFromSlot(int index)//only index
+    public void RemoveChestFromSlot(int index)
     {
         UpdateSlotState(index, SlotState.Empty);
         //for (int i = 0; i < slots.Count; ++i)

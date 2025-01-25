@@ -17,7 +17,6 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private int unlockTime;     //timer in minutes
 
     private ChestController chestController;
-    private ChestStateMachine stateMachine;//x
 
     private Coroutine timerCoroutine;
     private int hours, minutes, seconds, totalSeconds;
@@ -34,9 +33,6 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         this.unlockTime = chestSO.UnlockTime;
 
         chestStateText.text = "Locked";
-
-        stateMachine = new ChestStateMachine();//x
-        stateMachine.ChangeState(ChestStates.Locked);//x
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -56,7 +52,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         minutes = (totalSeconds % 3600) / 60;
         seconds = totalSeconds % 60;
 
-        chestStateText.text = $"{hours:00}:{minutes:00}:{seconds:00}";//x
+        chestStateText.text = $"{hours:00}:{minutes:00}:{seconds:00}";
     }
 
     public ChestScriptableObject GetChestData() => chestSO;
@@ -64,4 +60,6 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public int GetCurrentTime() => (hours * 60 + minutes);
 
     public void SetChestStateText(string text) => chestStateText.text = text;
+
+    public void SetChestID(int chestID) => chestItem.SetID(chestID);
 }

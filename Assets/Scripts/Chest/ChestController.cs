@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 public class ChestController : MonoBehaviour
 {
     [SerializeField] private ChestView chestView;
-    [SerializeField] private ChestItem chestItem;
     private ChestView unlockingChest;
 
     public void CreateRandomChest(List<ChestScriptableObject> chestSO)
@@ -15,11 +14,11 @@ public class ChestController : MonoBehaviour
             return;
 
         ChestScriptableObject randomChestSO = chestSO[Random.Range(0, chestSO.Count)];
-        ChestView chestObject = Instantiate(chestView);//random chst so, 
+        ChestView chestObject = Instantiate(chestView);
         chestObject.InitializeChestData(this, randomChestSO);
 
         int chestID = GameService.Instance.SlotService.AddChestToSlot(chestObject);
-        chestItem.SetID(chestID);
+        chestObject.SetChestID(chestID);
     }
 
     public bool IsAnotherChestUnlocking() => unlockingChest != null;
