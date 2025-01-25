@@ -8,14 +8,12 @@ public class ChestItem : MonoBehaviour, IPointerClickHandler
 {
     private int chestID;//related to slot.
     [SerializeField] private ChestView chestView;
-    [SerializeField] private TextMeshProUGUI chestStateText;
     private ChestStateMachine stateMachine;
     private ChestController chestController;
     private Coroutine timerCoroutine;
 
     private void Start()
     {
-        chestView = GetComponent<ChestView>();
         chestView.SetChestStateText("Locked");
 
         stateMachine = new ChestStateMachine();
@@ -72,7 +70,7 @@ public class ChestItem : MonoBehaviour, IPointerClickHandler
 
     public ChestStates GetChestState() => stateMachine.GetCurrentState();
 
-    public void SetChestStateText(string text) => chestStateText.text = text;
+    public void SetChestStateText(string text) => chestView.SetChestStateText(text);
 
     public ChestScriptableObject GetChestData() => chestView.GetChestData();
 

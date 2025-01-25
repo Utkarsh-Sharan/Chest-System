@@ -42,8 +42,8 @@ public class UIService : MonoBehaviour
         if(instantiatedPopups.TryGetValue(popupType, out PopupView popupObject))
         {
             currentlyOpenedPopup = popupObject;
-            currentlyOpenedPopup.gameObject.SetActive(true);
             currentlyOpenedPopup.Setup(chestData, chestItem);
+            currentlyOpenedPopup.gameObject.SetActive(true);
         }
     }
 

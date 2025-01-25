@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximumSlots: 5
-  emptySlotObject: {fileID: 2076249733022247596, guid: a1c74ec59d2e8c942afe2a819b148b50, type: 3}
+  emptySlotPrefab: {fileID: 2076249733022247596, guid: a1c74ec59d2e8c942afe2a819b148b50, type: 3}
 --- !u!1 &1989256970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestView: {fileID: 6232566782523013107, guid: f424d1e29b1557e42b4533daa4c3d40c, type: 3}
+  chestItem: {fileID: -949642063527892164, guid: f424d1e29b1557e42b4533daa4c3d40c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

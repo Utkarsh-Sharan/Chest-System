@@ -9,7 +9,7 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private ChestScriptableObject chestSO;
 
     [SerializeField] private ChestItem chestItem;
-    [SerializeField] private TextMeshProUGUI chestStateText;//x
+    [SerializeField] private TextMeshProUGUI chestStateText;
     [SerializeField] private Image chestImage;
     private ChestType chestType;
     private RangeInt coinRange;
@@ -63,9 +63,5 @@ public class ChestView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public int GetCurrentTime() => (hours * 60 + minutes);
 
-    public void ChangeState(ChestStates newState) => stateMachine.ChangeState(newState);//x
-
-    public ChestStates GetChestState() => stateMachine.GetCurrentState();//x
-
-    public void SetChestStateText(string text) => chestStateText.text = text;//x
+    public void SetChestStateText(string text) => chestStateText.text = text;
 }

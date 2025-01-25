@@ -7,7 +7,7 @@ public class MessagePopupView : PopupView
 {
     [SerializeField] private TextMeshProUGUI messageText;
 
-    public override void Setup(ChestView chestView)
+    public override void Setup(ChestScriptableObject chestData, ChestItem chestItem)
     {
         
     }

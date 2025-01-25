@@ -9,17 +9,19 @@ public class ChestBuyPopupView : PopupView
     [SerializeField] private TextMeshProUGUI chestUnlockText;
     [SerializeField] private Button closeButton;
     [SerializeField] private Button buyButton;
-    private const int minutesPerGem = 10;
     private int chestTimeToGems;
+    private ChestItem chestItem;
 
     private void Start()
     {
         closeButton.onClick.AddListener(ClosePopup);
-        buyButton.onClick.AddListener(() => BuyChest(chestView));
+        buyButton.onClick.AddListener(BuyChest);
     }
 
     public override void Setup(ChestScriptableObject chestData, ChestItem chestItem)
     {
+        this.chestItem = chestItem;
+
         if(chestItem.GetChestState() == ChestStates.Locked)
             chestTimeToGems = (int)Mathf.Ceil(chestData.UnlockTime / (float)minutesPerGem);
 
@@ -29,7 +31,7 @@ public class ChestBuyPopupView : PopupView
         chestUnlockText.text = $"Unlock with {chestTimeToGems} gems?";
     }
 
-    private void BuyChest(ChestItem chestItem)
+    private void BuyChest()
     {
         if (GameService.Instance.CurrencyService.IsSufficientGemsAvailable(chestTimeToGems))
         {

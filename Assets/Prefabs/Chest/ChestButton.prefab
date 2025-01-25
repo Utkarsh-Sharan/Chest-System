@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2768574fa4ef7f24cb9ad7ba253a5b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chestItem: {fileID: -949642063527892164}
   chestStateText: {fileID: 8808933255418332374}
   chestImage: {fileID: 3281783809510265491}
 --- !u!114 &-949642063527892164
@@ -175,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6008e79c1693faf49977a5e8fb8a77b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chestView: {fileID: 6232566782523013107}
 --- !u!1 &6673325229743308999
 GameObject:
   m_ObjectHideFlags: 0
