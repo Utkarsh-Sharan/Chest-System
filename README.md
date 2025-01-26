@@ -42,10 +42,10 @@ Flexibility: All chest properties (rewards, timers, etc.) are managed through **
 
 | Chest Type    | Rewards                        | Timer   |
 | ------------- | ------------------------------ | ------- |
-| **Common**    | Coins: 100-200 💰, Gems: 10-20 💎 | 15 mins |
-| **Rare**      | Coins: 300-500 💰, Gems: 20-40 💎 | 30 mins |
-| **Epic**      | Coins: 600-800 💰, Gems: 45-60 💎 | 1 hour  |
-| **Legendary** | Coins: 1000-1200 💰, Gems: 80-100 💎 | 3 hours |
+| **Common**    | Coins: 100-200 💰, Gems: 10-20 💎 | 1 minute |
+| **Rare**      | Coins: 300-500 💰, Gems: 20-40 💎 | 5 minutes |
+| **Epic**      | Coins: 600-800 💰, Gems: 45-60 💎 | 10 minutes  |
+| **Legendary** | Coins: 1000-1200 💰, Gems: 80-100 💎 | 20 minutes |
 
 **3. Chest Slots**
 
