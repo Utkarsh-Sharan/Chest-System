@@ -20,13 +20,13 @@ The project uses MVC architecture for clear separation of concerns and Service L
 
 ## Features
 
-**1. Currencies**
+### 1. Currencies
 
 Coins 💰: Primary currency used to determine rewards from chests.
 
 Gems 💎: Secondary currency used to unlock chests instantly by skipping timers.
 
-**2. Chest Types**
+### 2. Chest Types
 
 Details:
 
@@ -47,7 +47,7 @@ Flexibility: All chest properties (rewards, timers, etc.) are managed through **
 | **Epic**      | Coins: 600-800 💰, Gems: 45-60 💎 | 10 minutes  |
 | **Legendary** | Coins: 1000-1200 💰, Gems: 80-100 💎 | 20 minutes |
 
-**3. Chest Slots**
+### 3. Chest Slots
 
 Scrollable List:
 
@@ -59,7 +59,7 @@ Slot Full Handling:
 
 Pop-up appears if all slots are full. ⚠️
 
-Chest Management
+**Chest Management**
 
 Chests added to slots remain locked until activated.
 
@@ -71,7 +71,7 @@ Unlock with Gems 💎: Instantly unlocks the chest by spending gems.
 
 Rewards are based on chest type and can be collected when the timer finishes.
 
-**4. Chest States**
+### 4. Chest States
 
 Locked 🔒: Chest is added but the timer has not started.
 
@@ -79,25 +79,25 @@ Unlocking ⏳: Timer is running for the chest.
 
 Unlocked ✅: Timer has finished; chest can be tapped to collect rewards.
 
-State Management
+**State Management**
 
 Implemented using the **State Pattern** for clean and maintainable transitions between chest states.
 
-**5. Unlocking Rules**
+### 5. Unlocking Rules
 
-Only one chest can be unlocking at a time.
+i. Only one chest can be unlocking at a time.
 
-Unlocking can also be done instantly using gems.
+ii. Unlocking can also be done instantly using gems.
 
-Unlocking with Gems
+**Unlocking with Gems**
 
 Gem Cost Calculation:
 
-1 Gem 💎 for every 10 minutes remaining on the timer.
+i. 1 Gem 💎 for every 10 minutes remaining on the timer.
 
-Cost reduces as the timer counts down.
+ii. Cost reduces as the timer counts down.
 
-Always use ceil for calculation (e.g., 11 mins = 2 Gems 💎, 29 mins = 3 Gems 💎).
+iii. Always use ceil for calculation (e.g., 11 mins = 2 Gems 💎, 29 mins = 3 Gems 💎).
 
 Pop-Up Handling:
 
