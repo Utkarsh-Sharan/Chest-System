@@ -161,3 +161,14 @@ If all slots are full, a pop-up will appear to notify the player. ⚠️
 
 2. Additional chest types and properties can be added without major code changes.
 
+---
+
+## Play here
+
+
+
+--
+
+## Watch here
+
+https://www.loom.com/share/d929846aa8f641989b07f1bce0307dfa?sid=44fae612-a98e-4822-bf49-6fb24ecee460
