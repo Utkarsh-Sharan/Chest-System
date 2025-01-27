@@ -38,6 +38,7 @@ public class SlotController : MonoBehaviour
     public int AddChestToSlot(ChestView chestObject)
     {
         chestObject.transform.SetParent(GetSlotTransform(currentIndex));
+        chestObject.transform.localScale = Vector3.one;
         chestObject.transform.localPosition = Vector3.zero;
 
         UpdateSlotState(currentIndex, SlotState.Occupied);
