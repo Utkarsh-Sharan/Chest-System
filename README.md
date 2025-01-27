@@ -167,7 +167,7 @@ If all slots are full, a pop-up will appear to notify the player. ⚠️
 
 https://outscal.com/utkarshsharan99/game/play-chest-system-build-2-game
 
---
+---
 
 ## Watch here
 
