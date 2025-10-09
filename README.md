@@ -1,5 +1,9 @@
 # Chest System 💸
 
+## ⚠️ **Archived Project Notice**  
+This Unity project is no longer maintained and may contain unpatched binaries affected by CVE-2025-59489.  
+Please do not use or distribute without applying Unity’s official security patch.
+
 ## Overview
 
 This project implements a dynamic chest system for Unity with the following key features:
@@ -160,12 +164,6 @@ If all slots are full, a pop-up will appear to notify the player. ⚠️
 1. Designers can easily adjust reward ranges, timers, and gem costs using the Scriptable Object system.
 
 2. Additional chest types and properties can be added without major code changes.
-
----
-
-## Play here
-
-https://outscal.com/utkarshsharan99/game/play-chest-system-build-2-game
 
 ---
 
